@@ -1,0 +1,443 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+
+*{
+	box-sizing:border-box;
+}
+
+html {font-size: 1em; height:100%;}
+
+body {
+  font-family: 'Lato', helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #333;
+  height:100%;
+}
+
+p {
+	margin-bottom: 1.3em;
+}
+
+dl, dd, dt, p, form, table{
+	font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  margin-bottom:0.75em;
+  font-weight: 600;
+  line-height: 1em;
+  font-family: 'Lato', sans-serif;
+}
+
+h1{
+	font-family: 'Oswald', 'Lato', sans-serif;
+}
+
+input[type="submit"]{
+	font-family: 'Oswald', sans-serif;
+	font-size:1.25em;
+	padding:0.125em 1em;
+	background-color: #bbb;
+	border:none;
+	border-radius: 3px;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 5.063em;
+}
+
+h2 {font-size: 3.375em;}
+
+h3 {font-size: 2.25em; margin:0 0 1em 0;}
+
+h4 {font-size: 1.5em;}
+
+h6 {padding:0 0 10px;}
+
+small, .font-small {font-size: 0.667em;}
+
+a{
+	color:inherit;
+	text-decoration: none;
+}
+
+a:hover{
+	opacity:0.5;
+	filter:alpha(opacity=50);
+}
+
+div{
+	border-radius:5px;
+}
+
+.flex{
+	width:100%;
+	display:-webkit-box;
+	display:-webkit-flex;
+	display:-ms-flexbox;
+	display:flex;
+	-webkit-box-pack:justify;
+	-webkit-justify-content:space-between;
+	    -ms-flex-pack:justify;
+	        justify-content:space-between;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-flex-wrap:wrap;
+	    -ms-flex-wrap:wrap;
+	        flex-wrap:wrap;
+}
+
+.space-around{
+	-webkit-justify-content:space-around;
+	    -ms-flex-pack:distribute;
+	        justify-content:space-around;
+}
+
+.flex-center{
+	-webkit-box-align:center;
+	-webkit-align-items:center;
+	    -ms-flex-align:center;
+	        align-items:center;
+}
+
+.flex-end{
+	-webkit-box-align:end;
+	-webkit-align-items:flex-end;
+	    -ms-flex-align:end;
+	        align-items:flex-end;
+}
+
+.container{
+	width:80%;
+	margin:0 auto;
+	padding:25px;
+}
+
+.container50{
+	width:66%;
+	margin:0 auto;
+	padding:25px;
+}
+
+.fullwidth{
+	width:100%;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.center{
+	display:block;
+	margin:0 auto;
+}
+
+.clear{
+	clear:both;
+}
+
+.banner-image{
+	margin-bottom:25px;
+}
+
+.green{
+	color:#090;
+}
+
+.red{
+	color:#900;
+}
+
+.yellow{
+	color:#990;
+}
+
+.float-right{
+	float:right;
+}
+
+.section-header{
+	margin:35px inherit;
+}
+
+/* Header */
+
+header{
+	background-color: #555;
+}
+
+.search-fix{
+	position:relative;
+	top:-4px;
+}
+
+.header-social{
+	width:150px;
+	float:right;
+	margin-bottom:25px;
+}
+
+header form{
+	float:right;
+}
+
+header input[type="submit"], .promo input[type="submit"], .submit-fix{
+	position: relative;
+	top:4px;
+}
+
+input[type="submit"]:hover{
+	cursor: pointer;
+}
+
+nav{
+	background-color: #777;
+	font-size:1.25em;
+}
+
+nav .container{
+	padding:10px 25px;
+}
+
+h1 span{
+	color:#900;
+}
+
+/* Footer */
+
+footer{
+	background-color: #555;
+}
+
+.footer-nav{
+	font-weight:400;
+}
+
+.footer-nav span{
+	font-size: 1.2em;
+	font-weight:600;
+}
+
+.footer-social{
+	width:200px;
+	float:right;
+}
+
+/* Check Out */
+
+table{
+	width:100%;
+	text-align: center;
+	margin-bottom:1em;
+}
+
+table .title{
+	height:50px;
+	background-color: #bbb;
+	font-size: 1.25em;
+	font-family: 'Lato', sans-serif;
+}
+
+table tr{
+	height:35px;
+	background-color: #ddd;
+}
+
+table td{
+	border: 4px solid #fff;
+	border-left:none;
+	padding:10px 0;
+	border-radius:5px;
+	vertical-align: middle;
+}
+
+/* Item */
+
+.top-cont{
+	text-align: left;
+}
+
+.top-cont tr{
+	height: 25px;
+}
+
+.top-cont td{
+	border:none;
+}
+
+.top-cont tr td:first-child{
+	width:20px;
+}
+
+.top-cont tr td:nth-child(2){
+	width:150px;
+}
+
+.atc-button{
+	margin:30px auto 15px;
+	font-size: 1.5em !important;
+}
+
+/* Payment */
+
+.width75{
+	width:72.5%;
+	display:inline-block;
+}
+
+.width25{
+	width:22.5%;
+	display:inline-block;
+}
+
+.promo{
+	margin:1em 0 3em;
+}
+
+.payment-options address{
+	margin-bottom:2.5em;
+	font-family: "Lato",sans-serif;
+}
+
+.payment-options>div>div{
+	background-color: #ddd;
+	border-radius:5px;
+	padding:15px;
+	margin-right:15px;
+}
+
+.payment-options>div>div:last-child{
+	margin-right:0;
+}
+
+/* Client */
+
+.inner-container{
+	width:100%;
+	margin:0 auto;
+	background-color: #eee;
+	padding:15px;
+}
+
+.child50>div{
+	width:48%;
+}
+
+#client_orders table{
+	margin-bottom:0;
+}
+
+hr{
+	margin:0 0 15px;
+}
+
+.client input[type="submit"]{
+	display: block;
+	margin:10px 2px 10px auto;
+}
+
+.client h4{
+	 margin:1em 0 0.75em;
+}
+
+.client td{
+	border-color:#eee;
+}
+
+.client_item h3{
+	margin:35px 0;
+}
+
+.client h2{
+	margin-bottom:25px;
+}
+
+form label{
+	font-size:1.15em;
+}
+
+input[type="text"], select{
+	border-radius:3px;
+	border:1px solid rgba(0,0,0,0.15);
+	border-top:1px solid rgba(0,0,0,0.3);
+	border-left:1px solid rgba(0,0,0,0.3);
+	padding:9px 10px;
+}
+
+/* Item */
+
+.bundle-title{
+	margin:35px;
+	font-weight:900;
+}
+
+.pay-choice input{
+	margin-bottom:15px;
+}
+.pay-choice input:last-child{
+	margin-top:10px;
+	margin-bottom:0;
+}
+
+.top-cont td{
+	background-color: #fff;
+}
+
+/* cart */
+
+#cart-pop, #login-pop{
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.90);
+	z-index:999;
+	position:fixed;
+	top:0; left:0;
+}
+
+#item-added{
+	margin-left:15px;
+}
+
+.toggleLogin{
+	width:350px;
+	padding:0;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	position:absolute;
+	z-index:9999;
+}
+
+.toggleCart{
+	padding:0;
+	width:30%;
+	min-width:300px;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	position:absolute;
+	z-index:9999;
+}
+
+.pop-title{
+	margin:0; padding:25px 0 25px;
+	text-align:center;
+}
+
+.toggleCart>div, .toggleLogin>div{
+	padding:15px;
+	background-color: rgb(255,255,255);
+	border:1px solid rgba(0,0,0,0.15);
+}
+
+.toggleCart table{
+	background-color: #ccc;
+}

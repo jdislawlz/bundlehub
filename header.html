@@ -1,0 +1,31 @@
+<div id="cart-pop" style="display:none"> <?php include 'cart.html' ?> </div>
+	<div id="login-pop" style="display:none"> <?php include 'login.html' ?> </div>
+	<header>
+		<div class="container">
+			<div class="clear flex flex-end">
+				<h1><a href="home.php">The <span>Bundle</span> Hub</a></h1>
+				<div>
+					<ul class="flex header-social flex-center">
+						<?php echo $loginOut; ?>
+				    </ul>
+					<div style="clear:both;"></div>
+					<a href=# id="cart"><img src="img/cart.png" height="35px" style="margin-left:15px; float:right;"></a>
+					<form class="search-fix">
+						<input type="text" name="Search">
+						<input type="submit" value="Search">
+					</form>
+				</div>
+			</div>
+		</div>
+			<nav>
+				<div class="container">
+					<ul class="flex flex-center">
+						<li><a href="item.php?item=6">Movie Bundle</a></li>
+						<li><a href="item.php?item=7">Music Bundle</a></li>
+						<li><a href="item.php?item=8">Game Bundle</a></li>
+						<li><a href="item.php?item=9">Book Bundle</a></li>
+						<li><a href="item.php?item=10">App Bundle</a></li>
+					</ul>
+				</div>
+			</nav>
+	</header>

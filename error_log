@@ -1,0 +1,3 @@
+[29-Sep-2014 19:50:16 America/Chicago] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'admin'@'localhost' (using password: NO) in /home3/jdislawl/public_html/bundlehub/home.php on line 2
+[04-Oct-2014 12:29:27 America/Chicago] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'admin'@'localhost' (using password: NO) in /home3/jdislawl/public_html/bundlehub/home.php on line 2
+[06-Oct-2014 14:30:12 America/Chicago] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'admin'@'localhost' (using password: NO) in /home3/jdislawl/public_html/bundlehub/home.php on line 2
