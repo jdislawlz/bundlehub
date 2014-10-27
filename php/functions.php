@@ -43,11 +43,7 @@ session_start();
     function newuser($con){
         $username = mysqli_real_escape_string($con, $_POST['username']);
         $email = mysqli_real_escape_string($con, $_POST['email']);
-        $password = mysqli_real_escape_string($con, $_POST['password']); 
-
-        echo $username."<br>";
-        echo $password."<br>";
-        echo $email."<br>";
+        $password = mysqli_real_escape_string($con, $_POST['password']);
 
         $query = "INSERT INTO bundlehub.users (username, password, email, type) VALUES ('$username', '$password', '$email', '0');";
 
@@ -58,13 +54,29 @@ session_start();
         mysqli_query($con, $query);
     }
 
+    function editUser($con){
+    	$name = mysqli_real_escape_string($con, $_GET['username']);
+        $pass = mysqli_real_escape_string($con, $_GET['password']);
+        $email = mysqli_real_escape_string($con, $_GET['email']);
+        $type = mysqli_real_escape_string($con, $_GET['access']);
+        $id = mysqli_real_escape_string($con, $_GET['id']);
+
+        $query = "UPDATE bundlehub.users SET username='$name', password='$pass', email='$email', type='$type' WHERE id='$id'";
+        $result = mysqli_query($con, $query);
+        
+        if (!$result) {
+                die('Error: ' . mysqli_error($con) . mysqli_errno($con));
+            }
+
+        mysqli_query($con, $query);
+    }
+
     function addItem($con){
-        $name = mysqli_real_escape_string($con, $_POST['name']);
-        $desc = mysqli_real_escape_string($con, $_POST['description']);
-        $cat = mysqli_real_escape_string($con, $_POST['category']);
-        $sku = mysqli_real_escape_string($con, $_POST['sku']);
-        $tier = mysqli_real_escape_string($con, $_POST['tier']);
-        $additem = mysqli_real_escape_string($con, $_POST['additem']);
+        $name = mysqli_real_escape_string($con, $_GET['name']);
+        $desc = mysqli_real_escape_string($con, $_GET['description']);
+        $cat = mysqli_real_escape_string($con, $_GET['category']);
+        $sku = mysqli_real_escape_string($con, $_GET['sku']);
+        $tier = mysqli_real_escape_string($con, $_GET['tier']);
         
         $result = mysqli_query($con,"SELECT * FROM products WHERE name = '$name'");
         
@@ -76,6 +88,24 @@ session_start();
             }
             mysqli_query($con, $query);
         }
+    }
+
+    function editItem($con){
+    	$name = mysqli_real_escape_string($con, $_GET['name']);
+        $price = mysqli_real_escape_string($con, $_GET['price']);
+        $cat = mysqli_real_escape_string($con, $_GET['category']);
+        $sku = mysqli_real_escape_string($con, $_GET['sku']);
+        $tier = mysqli_real_escape_string($con, $_GET['tier']);
+        $id = mysqli_real_escape_string($con, $_GET['id']);
+
+        $query = "UPDATE bundlehub.products SET name='$name', category='$cat', sku='$sku', price='$price', rating='$tier' WHERE productid='$id'";
+        $result = mysqli_query($con, $query);
+        
+        if (!$result) {
+                die('Error: ' . mysqli_error($con) . mysqli_errno($con));
+            }
+
+        mysqli_query($con, $query);
     }
 
     function removeItem($con,$item){
@@ -160,7 +190,7 @@ if (isset($_POST['username'])) {
 if(isset($_SESSION['username'])){
     $user = $_SESSION['username'];
     if(checkpriv($con,$_SESSION['username'])==1){
-        $loginOut = "<li><a href='php/logout.php' id='logout'>Log Out</a></li><li><a href='admin.php'>Welcome, $user</a></li>";
+        $loginOut = "<li><a href='php/logout.php' id='logout'>Log Out</a></li><li><a href='admin_inventory.php'>Welcome, $user</a></li>";
     }
     else{
          $loginOut = "<li><a href='php/logout.php' id='logout'>Log Out</a></li><li><a href='client.php'>Welcome, $user</a></li>";
@@ -170,16 +200,24 @@ else{
     $user = "user";
     $loginOut = "<a href='' id='login'>Log In</a>"; 
 }
-if(checkpriv($con,$_SESSION['username'])==1 && isset($_POST['additem'])){
+if(checkpriv($con,$_SESSION['username'])==1 && isset($_GET['additem'])){
     addItem($con);
     header('Location: php/bounce.php');
-}/*
-if(isset($_GET['delete'])){
-    removeItem($con,$_GET['delete']);
+}
+if(checkpriv($con,$_SESSION['username'])==1 && isset($_GET['edititem'])){
+    editItem($con);
     header('Location: php/bounce.php');
 }
-if(isset($_GET['delete_user'])){
-    removeUser($con,$_GET['delete_user']);
+if(checkpriv($con,$_SESSION['username'])==1 && isset($_GET['edituser'])){
+    editUser($con);
+    header('Location: php/bounce_u.php');
+}
+if(checkpriv($con,$_SESSION['username'])==1 && isset($_GET['deleteitem'])){
+    removeItem($con,$_GET['id']);
     header('Location: php/bounce.php');
-}*/
+}
+if(checkpriv($con,$_SESSION['username'])==1 && isset($_GET['deleteuser'])){
+    removeUser($con,$_GET['id']);
+    header('Location: php/bounce_u.php');
+}
 ?>

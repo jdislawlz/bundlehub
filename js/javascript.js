@@ -75,9 +75,67 @@ $(document).ready(function () {
 			$('#client_selection').fadeIn(250);
 		});
 	});
-	$('.delete').click(function(e){
+	$(document).on("click", ".edit", function(e){
 		e.preventDefault();
-		$(this).parents("tr").fadeOut(250);
+		for (i=2;i<=6;i++){
+			var cell = $(this).parent().parent().find('td:eq('+i+')');
+			var data = $(this).parent().parent().find('td:eq('+i+')').html();
+			cell.html("<input style='width:95%;' type='text' value='"+data+"'>");
+		}
+		$(this).parent().html("<a class='update' href=#>update</a><br><a class='delete' href=#>delete</a>");
+	});
+	$(document).on("click", ".delete", function(e){
+		var url = window.location.href+"?deleteitem=true";
+		var iden = $(this).parent().parent().find('td:eq(1)').html();
+		url+="&id="+iden;
+		$(this).parent().html("<a class='edit' href=#>x</a>");
+		console.log(url);
+		window.location.href = url;
+	});
+	$(document).on("click", ".update", function(e){
+		var url = window.location.href+"?edititem=true";
+		var iden = $(this).parent().parent().find('td:eq(1)').html();
+		url+="&id="+iden;
+		for (i=2;i<=6;i++){
+			var name = $(this).parent().parent().find('td:eq('+i+')').attr("data");
+			var data = $(this).parent().parent().find('td:eq('+i+') input').val();
+			console.log(name);
+			url+="&"+name+"="+data;
+		}
+		$(this).parent().html("<a class='edit' href=#>x</a>");
+		console.log(url);
+		window.location.href = url;
+	});
+	$(document).on("click", ".editu", function(e){
+		e.preventDefault();
+		for (i=2;i<=6;i++){
+			var cell = $(this).parent().parent().find('td:eq('+i+')');
+			var data = $(this).parent().parent().find('td:eq('+i+')').html();
+			cell.html("<input style='width:95%;' type='text' value='"+data+"'>");
+		}
+		$(this).parent().html("<a class='updateu' href=#>update</a><br><a class='deleteu' href=#>delete</a>");
+	});
+	$(document).on("click", ".deleteu", function(e){
+		var url = window.location.href+"?deleteuser=true";
+		var iden = $(this).parent().parent().find('td:eq(1)').html();
+		url+="&id="+iden;
+		$(this).parent().html("<a class='edit' href=#>x</a>");
+		console.log(url);
+		window.location.href = url;
+	});
+	$(document).on("click", ".updateu", function(e){
+		var url = window.location.href+"?edituser=true";
+		var iden = $(this).parent().parent().find('td:eq(1)').html();
+		url+="&id="+iden;
+		for (i=2;i<=5;i++){
+			var name = $(this).parent().parent().find('td:eq('+i+')').attr("data");
+			var data = $(this).parent().parent().find('td:eq('+i+') input').val();
+			console.log(name);
+			url+="&"+name+"="+data;
+		}
+		$(this).parent().html("<a class='edit' href=#>x</a>");
+		console.log(url);
+		window.location.href = url;
 	});
 	$('.atc-button').click(function(e){
 		e.preventDefault();
