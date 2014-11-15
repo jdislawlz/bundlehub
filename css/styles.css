@@ -111,6 +111,13 @@ div{
 	        align-items:flex-end;
 }
 
+.flex-start{
+	-webkit-box-align:start;
+	-webkit-align-items:flex-start;
+	    -ms-flex-align:start;
+	        align-items:flex-start;
+}
+
 .container{
 	width:80%;
 	margin:0 auto;
@@ -440,4 +447,10 @@ input[type="text"], select{
 
 .toggleCart table{
 	background-color: #ccc;
+}
+
+/* Search */
+
+.search h3, .search p, .search img{
+	margin:0;
 }

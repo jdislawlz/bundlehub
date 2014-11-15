@@ -181,6 +181,24 @@ session_start();
         return $type;
     }
 
+    function searchdb($con, $term){
+        $result = mysqli_query($con, "SELECT * FROM bundlehub.products WHERE Concat(name, description, category) LIKE '%".$term."%'");
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                if ($row['productid'] > 5){
+                    echo "<a href='item.php?item=".$row['productid']."'><div class='flex flex-center search'>";
+                    echo "<h3>".$row['name']."</h3>";
+                    echo "<p>$".$row['price']."</p>";
+                    echo "<p>".$row['rating']."</p>";
+                    echo "<div style='width:40%;'><img src='".$row['image']."' class='fullwidth banner-image' /></div>";
+                    echo "</div></a>";
+                }
+            }
+        } else {
+            echo "0 results";
+        }
+    }
+
 if (isset($_POST['email'])) {
     newuser($con);
 }

@@ -151,4 +151,14 @@ $(document).ready(function () {
         $(this).removeClass('edit-button');
         console.log('runn');
     });
+
+    $('.search-fix input[type=submit]').click(function(e){
+    	e.preventDefault();
+    	if($('.search-fix input[type=text]').val()){
+	    	var search = $('.search-fix input[type=text]').val();
+    		window.location = "search.php?search="+search;
+    	} else {
+    		alert('Please enter something');
+    	}
+    });
 });
