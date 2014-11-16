@@ -137,10 +137,6 @@ $(document).ready(function () {
 		console.log(url);
 		window.location.href = url;
 	});
-	$('.atc-button').click(function(e){
-		e.preventDefault();
-		$(this).attr("value", "Item Added!");
-	});
     
     $('.edit-button').click(function(e){
         e.preventDefault();

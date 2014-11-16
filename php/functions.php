@@ -2,6 +2,7 @@
 session_start();
 	
     $con = new mysqli('localhost', 'root', 'root', 'bundlehub');
+    $_SESSION['items'];
 
 	$errnum=mysqli_connect_errno();
 	if ($errnum)
@@ -199,6 +200,35 @@ session_start();
         }
     }
 
+    function displayCart($con, $items){
+        $result = mysqli_query($con, "SELECT * FROM bundlehub.products WHERE productid=0 ".$items);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                if ($row['productid'] > 5){
+                    echo "<div class='flex flex-center search'><a href='cart.php?deletecart=".$row['productid']."'>x</a>";
+                    echo "<a href='item.php?item=".$row['productid']."'><h3>".$row['name']."</h3></a>";
+                    echo "<p>$".$row['price']."</p>";
+                    echo "</div>";
+                }
+            }
+        } else {
+            echo "No items in your Cart";
+        }
+    }
+
+    function deleteCart($delete){
+        $deletethis = "OR productid=".$delete;
+        $_SESSION['items'] = str_replace($deletethis, "", $_SESSION['items']);
+    }
+
+if (isset($_GET['addtocart'])){
+    if (strpos($_SESSION['items'],$_GET['addtocart']) == false) {
+        $_SESSION['items'].=" OR productid=".$_GET['addtocart'];
+    }
+}
+if (isset($_GET['deletecart'])){
+    deleteCart($_GET['deletecart']);
+}
 if (isset($_POST['email'])) {
     newuser($con);
 }

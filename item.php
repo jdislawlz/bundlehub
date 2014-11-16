@@ -20,7 +20,9 @@
 				</div>
 				<div>
 					<h3>Pay What You Want <span class="font-small green"><span class="font-small"> Average Price: <?php echo displayItemPage($con,$item)['price']; ?></span></span></h3>
-					<form class="pay-choice">
+					<form class="pay-choice" action="item.php?">
+						<?php echo "<input type='hidden' name='item' value=".$item.">"?>
+						<?php echo "<input type='hidden' name='addtocart' value=".$item.">"?>
 						<input type="radio" name="pay" value="50"> $50<br>
 						<input type="radio" name="pay" value="30"> $30<br>
 						<input type="radio" name="pay" value="20"> $20<br>

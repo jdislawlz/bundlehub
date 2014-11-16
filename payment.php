@@ -1,4 +1,6 @@
-<!DOCTYPE HTML>
+<?php
+	include 'php/functions.php';
+?>
 <html>
 <head>
     <title>Bundle Hub Payment - Josh Delgado</title>
@@ -10,29 +12,7 @@
 		<div class="container flex">
 			<div class="width75">
 				<h3>Items You're Purchasing</h3>
-				<table class="text-center">
-					<tr class="title">
-						<td>Item</td>
-						<td>Description</td>
-						<td>Price</td>
-					</tr>
-					<tr>
-						<td>Edgar Wright Bundle</td>
-						<td>It's a Bundle!</td>
-						<td>$13</td>
-					</tr>
-					<tr>
-						<td>Douglas Adams Bundle</td>
-						<td>It's a Bundle!</td>
-						<td>$8.50</td>
-					</tr>
-					<tr>
-						<td>Health App Bundle</td>
-						<td>It's a Bundle!</td>
-						<td>$5</td>
-					</tr>
-				</table>
-				<a href="" id="edit">Edit Cart</a>
+				<?php displayCart($con,$_SESSION['items']); ?>
 			</div>
 			<div class="width25">
 				<h3>Order Summary</h3>

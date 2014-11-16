@@ -1,4 +1,6 @@
-<!DOCTYPE HTML>
+<?php
+ include 'php/functions.php';
+?>
 <html>
 <head>
     <title>Bundle Hub Cart - Josh Delgado</title>
@@ -7,8 +9,11 @@
 <body>
 	<?php include 'header.html'; ?>
 	<main>
-		<?php include 'cart.html'; ?>
+		<div class="container">
+		<?php displayCart($con,$_SESSION['items']); ?>
+		<a href="payment.php">Checkout</a>
+		</div>
 	</main>
-	<?php include 'footer.html'; ?>
+	<?php include 'footer.php'; ?>
 </body>
 </html>
