@@ -1,5 +1,20 @@
 <?php
 	include 'php/functions.php';
+	$prices = $_SESSION['prices'];
+	$length = strlen($prices);
+	if($length>0){
+		$subtotal = number_format(substr($prices,0,2),2);
+	} if($length>2){
+		$subtotal = $subtotal+number_format(substr($prices,2,2),2);
+	} if($length>4){
+		$subtotal = $subtotal+number_format(substr($prices,4,2),2);
+	} if($length>6){
+		$subtotal = $subtotal+number_format(substr($prices,6,2),2);
+	} if($length>8){
+		$subtotal = $subtotal+number_format(substr($prices,8,2),2);
+	}
+	$tax = number_format($subtotal * .060,2);
+	$total = number_format($subtotal+$tax,2);
 ?>
 <html>
 <head>
@@ -12,18 +27,18 @@
 		<div class="container flex">
 			<div class="width75">
 				<h3>Items You're Purchasing</h3>
-				<?php displayCart($con,$_SESSION['items']); ?>
+				<?php displayCart($con,$_SESSION['items'],$_SESSION['prices']); ?>
 			</div>
 			<div class="width25">
 				<h3>Order Summary</h3>
 				<table>
 					<tr>
 						<td>Subtotal:</td>
-						<td>$24.50</td>
+						<td>$<?php echo $subtotal ?></td>
 					</tr>
 					<tr>
 						<td>Tax:</td>
-						<td>$1.72</td>
+						<td>$<?php echo $tax; ?></td>
 					</tr>
 					<tr>
 						<td>Discount:</td>
@@ -31,11 +46,12 @@
 					</tr>
 					<tr class="title">
 						<td>Total:</td>
-						<td>$26.42</td>
+						<td>$<?php echo $total ?></td>
 					</tr>
 				</table>
 			</div>
 			<div class="promo">
+				<a href="cart.php">Edit Cart</a><br><br>
 				<label>Promo Code</label>
 				<input type="text" value="">
 				<input type="submit" value="Apply">

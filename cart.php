@@ -10,7 +10,7 @@
 	<?php include 'header.html'; ?>
 	<main>
 		<div class="container">
-		<?php displayCart($con,$_SESSION['items']); ?>
+		<?php displayCart($con,$_SESSION['items'],$_SESSION['prices']); ?>
 		<a href="payment.php">Checkout</a>
 		</div>
 	</main>

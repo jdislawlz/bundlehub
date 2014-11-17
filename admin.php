@@ -1,7 +1,7 @@
 <?php
 	include 'php/functions.php';
 
-if(checkpriv($con,$_SESSION['username'])!=1){
+if(checkpriv($con,$_SESSION['username'])==0){
     header('Location: home.php');
 }
 ?>

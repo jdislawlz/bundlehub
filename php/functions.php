@@ -3,6 +3,7 @@ session_start();
 	
     $con = new mysqli('localhost', 'root', 'root', 'bundlehub');
     $_SESSION['items'];
+    $_SESSION['prices'];
 
 	$errnum=mysqli_connect_errno();
 	if ($errnum)
@@ -200,15 +201,30 @@ session_start();
         }
     }
 
-    function displayCart($con, $items){
+    function displayCart($con, $items,$price){
         $result = mysqli_query($con, "SELECT * FROM bundlehub.products WHERE productid=0 ".$items);
         if ($result->num_rows > 0) {
+            $x=0;
             while($row = $result->fetch_assoc()) {
                 if ($row['productid'] > 5){
-                    echo "<div class='flex flex-center search'><a href='cart.php?deletecart=".$row['productid']."'>x</a>";
+                    echo "<div class='flex flex-center search'>";
+                    if(strpos($_SERVER['HTTP_REFERER'],"cart")==false){
+                        echo "<a href='cart.php?deletecart=".$row['productid']."'>x</a>";
+                    }
                     echo "<a href='item.php?item=".$row['productid']."'><h3>".$row['name']."</h3></a>";
-                    echo "<p>$".$row['price']."</p>";
+                    if ($x == 0){
+                        echo "<p>$".substr($price,0,2)."</p>";
+                    } elseif ($x == 1){
+                        echo "<p>$".substr($price,2,2)."</p>";
+                    } elseif ($x == 2){
+                        echo "<p>$".substr($price,4,2)."</p>";
+                    } elseif ($x == 3){
+                        echo "<p>$".substr($price,6,2)."</p>";
+                    } elseif ($x == 4){
+                        echo "<p>$".substr($price,8,2)."</p>";
+                    }
                     echo "</div>";
+                    $x++;
                 }
             }
         } else {
@@ -216,18 +232,30 @@ session_start();
         }
     }
 
-    function deleteCart($delete){
-        $deletethis = "OR productid=".$delete;
+    function deleteCart($delete,$item){
+        $deletethis = " OR productid=".$delete;
         $_SESSION['items'] = str_replace($deletethis, "", $_SESSION['items']);
+        $pricedel = strpos($item, $deletethis);
+        if($pricedel<14){
+            $_SESSION['prices'] = substr_replace($_SESSION['prices'],"",0,2);
+        } elseif($pricedel < 28){
+            $_SESSION['prices'] = substr_replace($_SESSION['prices'],"",2,2);
+        } elseif($pricedel < 42){
+            $_SESSION['prices'] = substr_replace($_SESSION['prices'],"",4,2);
+        } elseif($pricedel < 56){
+            $_SESSION['prices'] = substr_replace($_SESSION['prices'],"",6,2);
+        } else {
+            $_SESSION['prices'] = substr_replace($_SESSION['prices'],"",8,2);
+        }
     }
-
 if (isset($_GET['addtocart'])){
     if (strpos($_SESSION['items'],$_GET['addtocart']) == false) {
         $_SESSION['items'].=" OR productid=".$_GET['addtocart'];
+        $_SESSION['prices'].=$_GET['pay'];
     }
 }
 if (isset($_GET['deletecart'])){
-    deleteCart($_GET['deletecart']);
+    deleteCart($_GET['deletecart'],$_SESSION['items']);
 }
 if (isset($_POST['email'])) {
     newuser($con);
@@ -237,7 +265,7 @@ if (isset($_POST['username'])) {
 }
 if(isset($_SESSION['username'])){
     $user = $_SESSION['username'];
-    if(checkpriv($con,$_SESSION['username'])==1){
+    if(checkpriv($con,$_SESSION['username'])>=2){
         $loginOut = "<li><a href='php/logout.php' id='logout'>Log Out</a></li><li><a href='admin_inventory.php'>Welcome, $user</a></li>";
     }
     else{
@@ -248,23 +276,23 @@ else{
     $user = "user";
     $loginOut = "<a href='' id='login'>Log In</a>"; 
 }
-if(checkpriv($con,$_SESSION['username'])==1 && isset($_GET['additem'])){
+if(checkpriv($con,$_SESSION['username'])>=2 && isset($_GET['additem'])){
     addItem($con);
     header('Location: php/bounce.php');
 }
-if(checkpriv($con,$_SESSION['username'])==1 && isset($_GET['edititem'])){
+if(checkpriv($con,$_SESSION['username'])>=2 && isset($_GET['edititem'])){
     editItem($con);
     header('Location: php/bounce.php');
 }
-if(checkpriv($con,$_SESSION['username'])==1 && isset($_GET['edituser'])){
+if(checkpriv($con,$_SESSION['username'])>=2 && isset($_GET['edituser'])){
     editUser($con);
     header('Location: php/bounce_u.php');
 }
-if(checkpriv($con,$_SESSION['username'])==1 && isset($_GET['deleteitem'])){
+if(checkpriv($con,$_SESSION['username'])>=2 && isset($_GET['deleteitem'])){
     removeItem($con,$_GET['id']);
     header('Location: php/bounce.php');
 }
-if(checkpriv($con,$_SESSION['username'])==1 && isset($_GET['deleteuser'])){
+if(checkpriv($con,$_SESSION['username'])>=2 && isset($_GET['deleteuser'])){
     removeUser($con,$_GET['id']);
     header('Location: php/bounce_u.php');
 }
