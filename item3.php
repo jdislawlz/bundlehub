@@ -10,15 +10,18 @@
 		exit();
 	}
 
-	$result = mysqli_query($mysqli, "SELECT * FROM products WHERE productid=9");
+	$result = mysqli_query($mysqli, "SELECT * FROM products WHERE productid=8");
 
 	while($row = mysqli_fetch_array($result)) {
 		$name = $row['name'];
 		$description = $row['description'];
 		$img = " <img src='".$row['image']."' class='fullwidth banner-image' />";
 		$price = "$".$row['price'];
-		$rating = $row['rating'];
+		$prerating = $row['rating'];
 	}
+	if ($prerating>=7){$rating="<span class='green'>".$prerating."</span>/10";}
+	else if ($prerating<=4){$rating="<span class='red'>".$prerating."</span>/10";}
+	else{$rating="<span class='yellow'>".$prerating."</span>/10";}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -29,28 +32,26 @@
 <body>
 	<?php include 'header.html'; ?>
 	<main>
+		<h2 class="text-center bundle-title">Star Wars Games</h2>
+		<div class="bundles">
+			<div class="normal-bundle"><?php echo $img ?></div>
+			<div class="featured-bundle"><?php echo $img ?></div>
+		</div>
 		<div class="container">
-			<h2 class="text-center"><?php echo $name ?> <span class="font-small">[<span class="green"><?php echo $rating ?></span>/10]</span></h2>
-			<?php echo $img ?>
 			<div class="flex child50">
 				<div id="pay-extra">
-					<h3>About the Bundle</h3>
-					<p><?php echo $description ?></p>
+					<div class="flex flex-center">
+						<h3>About the Bundle</h3>
+						<p><?php echo $rating ?></p>
+					</div>
+					<p>There are classic Star Wars games for every decade. Here we bring you some of the best ones of the last two. With varied options of genre and game mechanics, as well as time period in the saga, this robust collection will keep you going through the week—at least.</p>
 				</div>
-<<<<<<< Updated upstream
-				<div>
-					<h3>Pay What You Want <span class="font-small green"><span class="font-small"> Average Price: <?php echo displayItemPage($con,$item)['price']; ?></span></span></h3>
-					<form class="pay-choice" action="item.php?">
-						<?php echo "<input type='hidden' name='item' value=".$item.">"?>
-						<?php echo "<input type='hidden' name='addtocart' value=".$item.">"?>
-=======
-				<div class="pay-extra">
+				<div id="pay-extra">
 					<div class="flex flex-center">
 						<h3>Pay What You Want</h3>
 						<p><span class="green">Average Price: <?php echo $price ?></span></p>
 					</div>
 					<form class="pay-choice">
->>>>>>> Stashed changes
 						<input type="radio" name="pay" value="50"> $50<br>
 						<input type="radio" name="pay" value="30"> $30<br>
 						<input type="radio" name="pay" value="20"> $20<br>
@@ -58,36 +59,9 @@
 						<input type="radio" name="pay" value="other"> Other <input id="other-text" style="display:none;"type="text"><br>
 					</form>
 				</div>
-				<!--<div>
-					<h3>Top contributers</h3>
-					<table class="top-cont">
-						<tr>
-							<td>1. </td>
-							<td>Zelda</td>
-							<td>$123.00</td>
-						</tr>
-						<tr>
-							<td>2. </td>
-							<td>Link</td>
-							<td>$122.00</td>
-						</tr>
-						<tr>
-							<td>3. </td>
-							<td>Ganondorf</td>
-							<td>$5.01</td>
-						</tr>
-						<tr>
-							<td>4. </td>
-							<td>Navi</td>
-							<td>$5.00</td>
-						</tr>
-						<tr>
-							<td>5. </td>
-							<td>Fi</td>
-							<td>$1.00</td>
-						</tr>
-					</table>
-				</div>-->
+				<div class="center">
+					<input type="submit" class="center atc-button" value="Add to Cart"/>
+				</div>
 			</div>
 		</div>
 	</main>

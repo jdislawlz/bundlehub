@@ -64,7 +64,6 @@ a{
 
 a:hover{
 	opacity:0.5;
-	filter:alpha(opacity=50);
 }
 
 div{
@@ -73,42 +72,22 @@ div{
 
 .flex{
 	width:100%;
-	display:-webkit-box;
-	display:-webkit-flex;
-	display:-ms-flexbox;
 	display:flex;
-	-webkit-box-pack:justify;
-	-webkit-justify-content:space-between;
-	    -ms-flex-pack:justify;
-	        justify-content:space-between;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	    -ms-flex-direction: row;
-	        flex-direction: row;
-	-webkit-flex-wrap:wrap;
-	    -ms-flex-wrap:wrap;
-	        flex-wrap:wrap;
+	justify-content:space-between;
+	flex-direction: row;
+	flex-wrap:wrap;
 }
 
 .space-around{
-	-webkit-justify-content:space-around;
-	    -ms-flex-pack:distribute;
-	        justify-content:space-around;
+	justify-content:space-around;
 }
 
 .flex-center{
-	-webkit-box-align:center;
-	-webkit-align-items:center;
-	    -ms-flex-align:center;
-	        align-items:center;
+	align-items:center;
 }
 
 .flex-end{
-	-webkit-box-align:end;
-	-webkit-align-items:flex-end;
-	    -ms-flex-align:end;
-	        align-items:flex-end;
+	align-items:flex-end;
 }
 
 .flex-start{
@@ -134,22 +113,26 @@ div{
 	width:100%;
 }
 
-.text-center{
+.text-center {
 	text-align: center;
 }
-
+.text-center-foot {
+	text-align: center;
+	padding: 10px;
+	background-color: #D3D3D3;
+}
 .center{
 	display:block;
-	margin:0 auto;
+	margin:36px auto 0 auto;
 }
 
 .clear{
 	clear:both;
 }
 
-.banner-image{
+/*.banner-image{
 	margin-bottom:25px;
-}
+}*/
 
 .green{
 	color:#090;
@@ -164,7 +147,7 @@ div{
 }
 
 .float-right{
-	float:right;
+	float:left;
 }
 
 .section-header{
@@ -257,7 +240,7 @@ table tr{
 table td{
 	border: 4px solid #fff;
 	border-left:none;
-	padding:10px 0;
+	padding:10px 10px;
 	border-radius:5px;
 	vertical-align: middle;
 }
@@ -448,9 +431,192 @@ input[type="text"], select{
 .toggleCart table{
 	background-color: #ccc;
 }
+<<<<<<< Updated upstream
 
 /* Search */
 
 .search h3, .search p, .search img{
 	margin:0;
 }
+=======
+.cart-icon {
+	height:35px; 
+	margin-left:15px; 
+	float:right;
+}
+.password-form {
+	display: inline-block;
+}
+.name-form {
+display: inline-block;
+}
+
+.normal-bundle {
+	width: 40%;
+	height:40%;
+	display: inline-block;
+}
+
+.featured-bundle {
+	border: 4px solid red;
+	width: 40%;
+	height:40%;
+	display: inline-block;
+}
+
+.bundles {
+	text-align: center;
+}
+@media (max-width: 768px) {
+	.logo {
+		font-size: 2.5em;
+	}
+	.container {
+		width: 100%;
+		margin: 0 auto;
+		padding: 25px;
+	}
+	.header-social {
+		float: left;
+		margin: 10px 0;
+	}
+	.search-fix {
+		position: relative;
+		top: -4px;
+		float: left
+	}
+	.cart-icon {
+		height:35px; 
+		margin-left:0;
+		margin-right:20px;
+		float:left;
+	}
+	.bundle-title {
+		 margin: 10px 0; 
+		font-weight: 900;
+	}
+	h2 {
+		font-size: 1.8em;
+	}
+	.child50>div {
+		width: auto;
+		display: block;
+	}
+	.green {
+		margin-left: 10px;
+	}
+	nav .container {
+		padding:10px 0;
+	}
+	.bundle-options {
+		text-align: center;
+		display: block;
+	}
+	.bundle-options li {
+		border-top-color: #555;
+		border-top-style: solid;
+		border-bottom-color: #555;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+	.bundle-options li:last-child {
+		border-top-color: #555;
+		border-top-style: solid;
+		border-bottom-color: #555;
+		border-bottom-style: solid;
+		border-bottom-width: 0px;
+	}
+	.footer-nav ul {
+		margin-bottom: 20px;
+	}
+
+	#pay-extra {
+		width: auto;
+	}
+	.helpful-links a {
+		text-align: center;
+	}
+	.myaccount-mobile {
+		display: block;
+	}
+	#account-mobile-btn{
+		display: block;
+		margin: 10px auto;
+		width: 100%;
+	}
+	table .title {
+		height: 50px;
+		background-color: #bbb;
+		font-size: .5em;
+		font-family: 'Lato', sans-serif;
+	}
+	table tr {
+		font-size: .5em;
+		height: 35px;
+		background-color: #ddd;
+	}
+	.add-new-address-mobile {
+		display: block;
+	}
+	.add-new-address-mobile-form {
+		width:auto;
+	}
+	.space-around {
+		display: block;
+	}
+	.child50>div {
+		width:auto;
+	}
+	.banner-image {
+		width: 100%;
+		padding: 10px;
+/*		height:50%;
+*/	}
+	.banner-wrapper {
+		height:50%;
+	}
+	.container50 {
+		width: auto;
+	}
+	.text-center-foot {
+		padding: 10px;
+		background-color: #D3D3D3;
+	}
+	hr {
+		display: none;
+	}
+	.second-block {
+		margin-top: 20px;
+	}
+	.child50>div {
+		width: auto;
+	}
+	.normal-bundle {
+	width: 40%;
+
+}
+
+	.featured-bundle {
+		border: 4px solid red;
+		width: 40%;
+
+	}
+
+	.bundles {
+		text-align: center;
+	}
+		
+}
+
+
+@media (max-width: 1060px) {
+	.header-social {
+		float: left;
+		}
+}
+
+
+
+
+
+>>>>>>> Stashed changes
